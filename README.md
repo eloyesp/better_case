@@ -1,49 +1,58 @@
+[![Gem Version](http://img.shields.io/gem/v/better_case.svg)](http://badge.fury.io/rb/better_case)
+[![Code Climate](http://img.shields.io/codeclimate/github/eloyesp/better_case.svg)](https://codeclimate.com/github/eloyesp/better_case)
+[![Build Status](http://img.shields.io/travis/eloyesp/better_case.svg)](https://travis-ci.org/eloyesp/better_case)
+[![Dependency Status](http://img.shields.io/gemnasium/eloyesp/better_case.svg)](https://gemnasium.com/eloyesp/better_case)
+[![License](https://img.shields.io/badge/license-AGPL-663266.svg)](https://gnu.org/licenses/agpl)
+
 # BetterCase
 
-Better Case uses refinements to implement ´===´ in core clases to enable 
+Better Case uses refinements to implement ´===´ in core clases to enable
 you to use case for cool stuff.
 
 Array use ´include?´, Symbol use ´respond_to?´ to make duck typing.
 
-To use it simply require and add `using BetterCase` on your module/class 
+To use it simply require and add `using BetterCase` on your module/class
 the rest of the code should never notice the change.
 
 ## Installation
-
-Add this line to your application's Gemfile:
-
-    gem 'better_case'
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
 
     $ gem install better_case
 
 ## Usage
 
-For usage examples, read the test folder.
+```ruby
+module Symbols
+
+  using BetterCase # enabled only on request
+
+  def a_method_that_duck_type object
+    case object
+    when :to_time
+      # do something with it
+    when :concat
+      # other stuff
+    end
+  end
+
+  def valid_option? option
+    case option
+    when [:a, :b] then true
+    else false
+    end
+  end
+
+end
+```
+
+## Road Map
+
+Well, I coudn't find any good feature to use for Hash, so I welcome any
+ideas.
 
 ## Contributing
 
-1. Fork it ( https://github.com/[my-github-username]/better_case/fork )
+1. Fork it ( https://github.com/eloyesp/better_case/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create a new Pull Request
-
-## licence
-
-Copyright (C) 2014 Eloy Espinaco 
-
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.

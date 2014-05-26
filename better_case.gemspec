@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
   spec.summary       = %q{Make case usefull adding good stuff to ===.}
   spec.description   = %q{Add cool behavior on case equality for core classes.}
   spec.homepage      = ""
-  spec.license       = "GPLv3"
+  spec.license       = "AGPL"
 
   spec.files         = `git ls-files -z`.split("\x0")
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
